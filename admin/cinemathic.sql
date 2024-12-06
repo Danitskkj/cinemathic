@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Nov-2024 às 13:24
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Tempo de geração: 06/12/2024 às 04:17
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuariocadastro`
+-- Estrutura para tabela `usuariocadastro`
 --
 
 CREATE TABLE `usuariocadastro` (
@@ -37,34 +37,33 @@ CREATE TABLE `usuariocadastro` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuariocadastro`
+-- Despejando dados para a tabela `usuariocadastro`
 --
 
 INSERT INTO `usuariocadastro` (`codigo`, `nome_completo`, `cpf`, `email`, `senha`, `admin`) VALUES
-(1, 'Daniel Telecken Schäfer ', '05565555035', 'danielschafer0715@gmail.com', 'daniel123', 1),
-(2, 'Thierry Fagundes', '05582095055', 'thifag8@gmail.com', '2cfa3e146a6fbd90bffc1a33d43c87e4', 1),
-(3, 'Felipe de Lima Fernandes', '02648708081', 'nataliafelipe@gmail.com', 'natalia2007', 0),
-(4, 'Caio ', '12345678910', 'caio@gmail.com', '0de1a1cbc0597c955c06c2a8e299a896', 0);
+(1, 'Daniel Telecken Schäfer ', '71461931010', 'danielschafer0715@gmail.com', '0389f6f76b040b503253a4eb3efcda49', 1),
+(2, 'Thierry Fagundes', '13842344031', 'thifag8@gmail.com', '2cfa3e146a6fbd90bffc1a33d43c87e4', 1),
+(3, 'Felipe de Lima Fernandes', '67338330000', 'nataliafelipe@gmail.com', 'natalia2007', 0);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `usuariocadastro`
+-- Índices de tabela `usuariocadastro`
 --
 ALTER TABLE `usuariocadastro`
   ADD PRIMARY KEY (`codigo`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `usuariocadastro`
 --
 ALTER TABLE `usuariocadastro`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
