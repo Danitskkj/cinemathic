@@ -40,7 +40,7 @@ include("php/permission.php");
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="catalogo.html">Catálogo</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="reserva.php">Reserva</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="sobre.html">Sobre</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="php/login.php">Login</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="php/logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -135,50 +135,73 @@ include("php/permission.php");
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const rows = ['A', 'B', 'C', 'D', 'E'];
-        const seatsPerRow = 10;
-        const occupiedSeats = ['A1', 'B3', 'C7', 'D4'];
+    const rows = ['A', 'B', 'C', 'D', 'E'];
+    const seatsPerRow = 10;
+    const totalSeats = rows.length * seatsPerRow;
 
-        // Preencher assentos
+    // Função para randomizar assentos ocupados
+    function randomizeSeats() {
+        const occupancyRate = 0.3; // Taxa de ocupação (30%)
+        const numberOfOccupiedSeats = Math.floor(totalSeats * occupancyRate);
+        const allSeats = [];
+
+        // Gera todos os IDs de poltronas
         rows.forEach(row => {
-            const column = document.getElementById(row);
-
             for (let i = 1; i <= seatsPerRow; i++) {
-                const seat = document.createElement('div');
-                const seatId = `${row}${i}`;
-
-                seat.classList.add('seat', 'bg-secondary', 'text-white', 'rounded', 'd-flex', 'justify-content-center', 'align-items-center', 'm-1');
-                seat.style.width = '40px';
-                seat.style.height = '40px';
-                seat.textContent = i;
-                seat.dataset.id = seatId;
-
-                if (occupiedSeats.includes(seatId)) {
-                    seat.classList.add('occupied', 'bg-danger');
-                } else {
-                    seat.addEventListener('click', () => {
-                        if (!seat.classList.contains('occupied')) {
-                            seat.classList.toggle('bg-success');
-                            updateProceedButton();
-                        }
-                    });
-                }
-
-                column.appendChild(seat);
+                allSeats.push(`${row}${i}`);
             }
         });
 
-        // Atualiza o botão de prosseguir
-        function updateProceedButton() {
-            const selectedSeats = document.querySelectorAll('.seat.bg-success');
-            const submitBtn = document.getElementById('submit-btn');
-            submitBtn.disabled = selectedSeats.length === 0;
+        // Embaralha os IDs
+        allSeats.sort(() => Math.random() - 0.5);
 
-            // Armazena as poltronas selecionadas no campo hidden
-            const selectedSeatsArray = Array.from(selectedSeats).map(seat => seat.dataset.id);
-            document.getElementById('selected-seats').value = selectedSeatsArray.join(', ');
+        // Retorna os primeiros IDs como ocupados
+        return allSeats.slice(0, numberOfOccupiedSeats);
+    }
+
+    // Obter assentos ocupados dinamicamente
+    const occupiedSeats = randomizeSeats();
+
+    // Preencher assentos
+    rows.forEach(row => {
+        const column = document.getElementById(row);
+
+        for (let i = 1; i <= seatsPerRow; i++) {
+            const seat = document.createElement('div');
+            const seatId = `${row}${i}`;
+
+            seat.classList.add('seat', 'bg-secondary', 'text-white', 'rounded', 'd-flex', 'justify-content-center', 'align-items-center', 'm-1');
+            seat.style.width = '40px';
+            seat.style.height = '40px';
+            seat.textContent = i;
+            seat.dataset.id = seatId;
+
+            if (occupiedSeats.includes(seatId)) {
+                seat.classList.add('occupied', 'bg-danger');
+            } else {
+                seat.addEventListener('click', () => {
+                    if (!seat.classList.contains('occupied')) {
+                        seat.classList.toggle('bg-success');
+                        updateProceedButton();
+                    }
+                });
+            }
+
+            column.appendChild(seat);
         }
-    </script>
+    });
+
+    // Atualiza o botão de prosseguir
+    function updateProceedButton() {
+        const selectedSeats = document.querySelectorAll('.seat.bg-success');
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.disabled = selectedSeats.length === 0;
+
+        // Armazena as poltronas selecionadas 
+        const selectedSeatsArray = Array.from(selectedSeats).map(seat => seat.dataset.id);
+        document.getElementById('selected-seats').value = selectedSeatsArray.join(', ');
+    }
+</script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hora = $_POST['hora'] ?? 'Não especificada';
     $data = $_POST['data'] ?? 'Não especificada';
     $poltronas = $_POST['poltronas'] ?? 'Nenhuma';
-    $valor_total = count(explode(',', $poltronas)) * 20; // Exemplo: cada poltrona custa R$20,00
+    $valor_total = count(explode(',', $poltronas)) * 20; // Cada poltrona custa R$20,00
 }
 ?>
 <!DOCTYPE html>
@@ -17,8 +17,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="author" content="Cinemathic" />
     <title>Reservas - Cinemathic</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/styles2.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet"/>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <link href="../css/styles2.css" rel="stylesheet"/>
 </head>
 
 <body class="bg-dark text-white">
@@ -42,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="../catalogo.html">Catálogo</a></li>
                     <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="../reserva.php">Reserva</a></li>
                     <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="../sobre.html">Sobre</a></li>
-                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="login.php">Login</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>

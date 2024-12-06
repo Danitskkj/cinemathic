@@ -10,6 +10,7 @@
     <h1 align="center">Editar Usuario</h1>
     <?php
         include('../php/conexao.php');
+        include('../php/permission.php');
 
         $login = $_GET['editar'];
         $sql = "SELECT * FROM usuariocadastro WHERE codigo = '$login'";

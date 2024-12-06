@@ -1,5 +1,6 @@
 <?php
 include('../php/conexao.php');
+include('../php/permission.php');
 
 $codigo = $_POST['codigo'];
 $nome = $_POST['nomeCompleto'];

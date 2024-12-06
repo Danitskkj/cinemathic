@@ -1,5 +1,6 @@
 <?php
 include('../php/conexao.php');
+include('../php/permission.php');
 
 $login = $_GET['deleta'];
 $sql = "DELETE FROM usuariocadastro WHERE codigo = '$login';";
